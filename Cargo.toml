@@ -22,5 +22,9 @@ features = [
   'RequestInit',
   'RequestMode',
   'Response',
+  'CanvasRenderingContext2d',
+  'Document',
+  'Element',
+  'HtmlCanvasElement',
   'Window',
 ]
