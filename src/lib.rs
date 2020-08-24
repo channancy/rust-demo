@@ -1,4 +1,3 @@
-use std::f64;
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
@@ -42,7 +41,7 @@ pub async fn run() -> Result<JsValue, JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn draw() {
+pub fn draw(color: String) {
     let document = web_sys::window().unwrap().document().unwrap();
     let canvas = document.get_element_by_id("canvas").unwrap();
     let canvas: web_sys::HtmlCanvasElement = canvas
@@ -57,7 +56,9 @@ pub fn draw() {
         .dyn_into::<web_sys::CanvasRenderingContext2d>()
         .unwrap();
 
-    context.set_fill_style(&"#e3efdd".into());
+    let hex_color = format!("#{}", color);
+
+    context.set_fill_style(&hex_color.into());
     // context.set_fill_style(&"rgb(150,50,0)".into());        
     
     context.fill_rect(15.0, 15.0, 80.0, 80.0);

@@ -12,7 +12,7 @@ const content = new class {
                 console.log(data);
                 this.content.textContent = data.new_color;
 
-                m.draw();
+                m.draw(data.new_color);
             })
         })
         .catch(console.error);
