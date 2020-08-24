@@ -19,4 +19,13 @@ const content = new class {
     }
 };
 
-content.render();
+const changeColorButton = document.getElementById("change-color");
+
+changeColorButton.addEventListener("click", event => {
+  console.log(event);
+  content.render();
+});
+
+setInterval(function() { 
+    content.render();
+}, 1000);
