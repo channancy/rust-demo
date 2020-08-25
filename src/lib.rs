@@ -25,7 +25,6 @@ pub async fn get_colors() -> Result<JsValue, JsValue> {
     opts.mode(RequestMode::Cors);
 
     let url = format!("http://www.colr.org/json/colors/random/6");
-
     let request = Request::new_with_str_and_init(&url, &opts)?;
 
     request
@@ -54,6 +53,7 @@ pub fn draw(color: String, position: i32) {
     let document = web_sys::window().unwrap().document().unwrap();
     let canvas_target = format!("canvas{}", position.to_string());
     let canvas = document.get_element_by_id(&canvas_target).unwrap();
+    
     let canvas: web_sys::HtmlCanvasElement = canvas
         .dyn_into::<web_sys::HtmlCanvasElement>()
         .map_err(|_| ())
@@ -67,7 +67,6 @@ pub fn draw(color: String, position: i32) {
         .unwrap();
 
     let hex_color = format!("#{}", color);
-
     context.set_fill_style(&hex_color.into());    
     context.fill_rect(15.0, 15.0, 80.0, 80.0);
 }
