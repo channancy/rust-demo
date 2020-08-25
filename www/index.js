@@ -10,22 +10,16 @@ const content = new class {
         .then(m => {
             return m.run().then((data) => {
                 console.log(data);
-                this.content.textContent = data.new_color;
+                let colors = data.colors;
 
-                m.draw(data.new_color);
+                m.draw(colors[0].hex, "1");
+                m.draw(colors[1].hex, "2");
             })
         })
         .catch(console.error);
     }
 };
 
-const changeColorButton = document.getElementById("change-color");
-
-changeColorButton.addEventListener("click", event => {
-  console.log(event);
-  content.render();
-});
-
 setInterval(function() { 
     content.render();
-}, 1000);
+}, 2000);

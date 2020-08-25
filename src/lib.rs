@@ -1,3 +1,5 @@
+mod utils;
+
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
@@ -5,17 +7,24 @@ use wasm_bindgen_futures::JsFuture;
 use web_sys::{Request, RequestInit, RequestMode, Response};
 
 #[derive(Debug, Serialize, Deserialize)]
+struct Colors {
+    colors: Vec<Color>
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Color {
-    pub new_color: String,
+    pub hex: String
 }
 
 #[wasm_bindgen]
 pub async fn run() -> Result<JsValue, JsValue> {
+    utils::set_panic_hook();
+
     let mut opts = RequestInit::new();
     opts.method("GET");
     opts.mode(RequestMode::Cors);
 
-    let url = format!("http://www.colr.org/json/color/random");
+    let url = format!("http://www.colr.org/json/colors/random/6");
 
     let request = Request::new_with_str_and_init(&url, &opts)?;
 
@@ -34,16 +43,17 @@ pub async fn run() -> Result<JsValue, JsValue> {
     let json = JsFuture::from(resp.json()?).await?;
 
     // Use serde to parse the JSON into a struct.
-    let color_info: Color = json.into_serde().unwrap();
+    let color_info: Colors = json.into_serde().unwrap();
 
     // Send the struct back to JS as an `Object`.
     Ok(JsValue::from_serde(&color_info).unwrap())
 }
 
 #[wasm_bindgen]
-pub fn draw(color: String) {
+pub fn draw(color: String, position: String) {
     let document = web_sys::window().unwrap().document().unwrap();
-    let canvas = document.get_element_by_id("canvas").unwrap();
+    let canvas_target = format!("canvas{}", position);
+    let canvas = document.get_element_by_id(&canvas_target).unwrap();
     let canvas: web_sys::HtmlCanvasElement = canvas
         .dyn_into::<web_sys::HtmlCanvasElement>()
         .map_err(|_| ())
