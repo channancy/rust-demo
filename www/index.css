@@ -1,4 +1,13 @@
-canvas {
-    height: 150;
-    width: 150;
+.outer-container {
+    text-align: center;
+    margin-top: 30vh;
+}
+
+.canvas-container {
+    height: 8vh;
+}
+
+.canvas-container > div {
+    display: inline-block;
+    width: 3.9vw;
 }

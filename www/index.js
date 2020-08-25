@@ -1,25 +1,21 @@
 const rust = import('../pkg');
 
 const content = new class {
-  constructor() {
-        this.content = document.getElementById("content");
-    }
+    constructor() {}
 
     render() {
         rust
         .then(m => {
-            return m.run().then((data) => {
-                console.log(data);
+            return m.get_colors().then((data) => {
                 let colors = data.colors;
 
-                m.draw(colors[0].hex, "1");
-                m.draw(colors[1].hex, "2");
+                colors.forEach((element, index) => {
+                    m.draw(element.hex, index);
+                });
             })
         })
         .catch(console.error);
     }
 };
 
-setInterval(function() { 
-    content.render();
-}, 2000);
+setInterval(() => content.render(), 2000);
