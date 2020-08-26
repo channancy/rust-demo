@@ -1,6 +1,6 @@
 [package]
-name = "rust-demo"
-version = "0.1.0"
+name = "rust-demo-squares"
+version = "0.1.2"
 authors = ["Nancy Chan <Chan-N@iehp.org>"]
 edition = "2018"
 
@@ -13,9 +13,7 @@ default = ["console_error_panic_hook"]
 [dependencies]
 wasm-bindgen = { version = "0.2.67", features = ["serde-serialize"]  }
 js-sys = "0.3.44"
-wasm-bindgen-futures = "0.4.17"
-serde = { version = "1.0.80", features = ["derive"] }
-serde_derive = "^1.0.59"
+rand = "0.7.3"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
@@ -33,11 +31,6 @@ wee_alloc = { version = "0.4.5", optional = true }
 [dependencies.web-sys]
 version = "0.3.4"
 features = [
-  'Headers',
-  'Request',
-  'RequestInit',
-  'RequestMode',
-  'Response',
   'CanvasRenderingContext2d',
   'Document',
   'Element',
