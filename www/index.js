@@ -6,13 +6,7 @@ const content = new class {
     render() {
         rust
         .then(m => {
-            return m.get_colors().then((data) => {
-                let colors = data.colors;
-
-                colors.forEach((element, index) => {
-                    m.draw(element.hex, index);
-                });
-            })
+            m.draw(1);
         })
         .catch(console.error);
     }
