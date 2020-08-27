@@ -1,4 +1,4 @@
-const rust = import('../pkg');
+import { Shape } from "rust-demo-squares";
 
 const content = new class {
     constructor() {
@@ -6,13 +6,10 @@ const content = new class {
     }
 
     render() {
-        rust
-        .then(m => {
-            this.elements.forEach(element => {
-                m.draw(element);
-            });
-        })
-        .catch(console.error);
+        this.elements.forEach(element => {
+            let shape = Shape.new();
+            shape.draw(element);
+        });
     }
 };
 
