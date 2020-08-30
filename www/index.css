@@ -3,6 +3,19 @@
     margin-top: 30vh;
 }
 
+.input-container {
+    margin-left: 1.75vw;
+    margin-bottom: 5vh;
+}
+
+#input {
+    width: 11.5vw;
+}
+
+#message {
+    margin-bottom: 1vh;
+}
+
 .canvas-container {
     height: 8vh;
 }

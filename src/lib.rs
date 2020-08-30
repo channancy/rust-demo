@@ -50,3 +50,8 @@ impl Shape {
         }
     }
 }
+
+#[wasm_bindgen]
+pub fn validate(input: String) -> bool {
+    return luhn::valid(&input);
+}
