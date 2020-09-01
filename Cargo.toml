@@ -1,6 +1,6 @@
 [package]
-name = "rust-demo-squares"
-version = "0.1.2"
+name = "rust-demo-test"
+version = "0.1.0"
 authors = ["Nancy Chan <Chan-N@iehp.org>"]
 edition = "2018"
 

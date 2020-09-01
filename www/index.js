@@ -1,4 +1,4 @@
-import { Shape, validate } from "rust-demo-squares";
+import { Shape, validate } from "rust-demo-test";
 
 // Shapes
 const content = new class {

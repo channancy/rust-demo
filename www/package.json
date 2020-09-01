@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
   "dependencies": {
-    "rust-demo-squares": "file:../pkg"
+    "rust-demo-test": "file:../pkg"
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "1.0.1",
